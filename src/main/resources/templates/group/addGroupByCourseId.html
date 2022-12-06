@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url("http://oboi.ws/filters/lomo_17_9804_oboi_osennee_ozero_1920x1080.jpg");
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<form
+        action="#"
+        th:action="@{/{courseId}/saveGroupByCourseId(courseId=${courseId})}"
+        th:object="${newGroup}"
+        method="POST"
+        style="text-align:center; margin-top:200px; font-size: 30px;">
+    <div class="container">
+        <hr>
+        <input type="hidden" name="id" th:field="*{id}">
+        <label for="email"><b>Group Name</b></label>
+        <input type="text" placeholder="group name" th:field="*{groupName}" name="email" id="email" required>
+        <label for="psw"><b>Date of start</b></label>
+        <input type="date" placeholder="choose date" th:field="*{dateOfStart}" name="psw" id="psw" required>
+        <label for="psw"><b>Image</b></label>
+        <input type="text" placeholder="image" th:field="*{image}" name="psw" id="psw1" >
+        <hr>
+        <button type="submit" class="registerbtn">Save group</button>
+    </div>
+</form>
+
+</body>
+</html>

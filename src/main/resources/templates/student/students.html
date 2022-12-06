@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies</title>
+    <style>table,
+    td {
+        border: 1px solid #333;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+    }
+
+    thead,
+    tfoot {
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX63729dTpoFWQVn9teKQvqzv0_ZF-0w_V8Tujl-R65Q&s");
+        color: #344712;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid #1e1818;
+            padding: 3px;
+        }
+        body{
+            background-image: url("https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148830026.jpg?w=2000");
+        }
+        .addStud{
+            display: flex;
+            justify-content: center;
+        }
+        .mainButton{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<table class="table table-bordered ">
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">first name</th>
+        <th scope="col">last name</th>
+        <th scope="col">phone number</th>
+        <th scope="col">email</th>
+        <th scope="col">study format</th>
+        <th scope="col">update</th>
+        <th scope="col">delete</th>
+        <th scope="col">assign</th>
+
+    </tr>
+    </thead>
+
+    <tbody class="table-success">
+    <tr th:each="student:${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.phoneNumber}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.studyFormat}"></td>
+
+
+        <td><a th:href="@{/students/edit/{id}(id=${student.getId()})}">
+            <button style="height: 40px; width: 80px; background-color:#66c487;">Update</button>
+        </a>
+        </td>
+        <td>
+            <form th:method="DELETE"
+                  th:action="@{/students/{id}/{groupId}(id=${student.getId()},groupId=${student.group.getId()})}">
+                <input type="submit" value="Delete" style="height: 40px; width: 80px; background-color:#94ee7d;"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="POST"
+                  th:action="@{/students/{studentId}/assignGroupToStudent(studentId=${student.getId()})}">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                        th:object="${group}" th:field="${group}">
+                    <option th:each="groups : ${group}"
+                            th:value="${group.id}"
+                            th:text="${group.groupName}"></option>
+                </select>
+                <button type="submit" value="assign" style="height: 30px; width: 60px; background: #171c13;"></button>
+            </form>
+    </tr>
+    </tbody>
+</table>
+
+<a class="addStud" th:href="@{/students/{id}/addStudent(id=${groupId})}">
+    <button>Add Student</button>
+</a>
+<br>
+<a class="mainButton" th:href="@{/companies}">
+    <button type="button" class="btn btn-primary btn-sm"> Main </button>
+</a>
+
+</body>
+</html>

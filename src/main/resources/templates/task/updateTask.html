@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Task</title>
+</head>
+<body>
+
+
+<form th:action="@{/tasks/{id}/{taskId}/update(id=${lessonIdT},taskId=${task.getId()})}"
+      th:object="${task}"
+      th:method="POST">
+    <div>
+        <label>
+            <input th:field="*{taskName}" placeholder="Task Name">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input th:field="*{taskText}" placeholder="Text">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input type="date"  name="dateOfStart" th:field="*{deadline}" placeholder="Deadline">
+
+        </label>
+    </div>
+
+    <div>
+        <input type="submit" value="update task">
+    </div>
+</form>
+</body>
+</html>

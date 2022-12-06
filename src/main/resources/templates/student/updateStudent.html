@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+
+<form th:action="@{/students/{groupId}/{id}/updateStudent(groupId=${groupId},id=${student.getId()})}"
+      th:object="${student}"
+      th:method="POST">
+    <div>
+        <label>
+            <input th:field="*{firstName}" placeholder="Student Name">
+        </label></div>
+    <div>
+        <label>
+            <input  th:field="*{lastName}" placeholder="Last Name">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input th:field="*{phoneNumber}" placeholder="Phone number">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input  th:field="*{email}" placeholder="Email">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input  th:field="*{studyFormat}" placeholder="Study Format">
+        </label>
+    </div>
+
+    <div>
+        <input type="submit" value="update">
+    </div>
+
+</form>
+</body>
+</html>

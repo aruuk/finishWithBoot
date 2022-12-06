@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>info</title>
+</head>
+
+<body>
+
+<div class="text">
+    <p class="text-warning bg-dark"> <p> info page </p>
+</div>
+
+<div th:object="${course}">
+
+<td><a th:href="@{/courses/courses/{id}(id=${companyId})}">
+    <button style="height: 40px; width: 90px; background-color:#66c487;">courses</button>
+</a>
+</td>
+
+<td><a th:href="@{/groups}">
+    <button style="height: 40px; width: 90px; background-color: #337dab;">all groups</button>
+</a>
+</td>
+</div>
+
+</body>

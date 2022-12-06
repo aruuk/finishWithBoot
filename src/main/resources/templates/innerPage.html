@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div th:object="${company}">
+    <img th:src="${company.getCompanyName()}" alt="image">
+    <p th:text="${company.locatedCountry}"></p>
+    <p th:text="${company.student}"></p>
+    <p th:text="${company.courses}"></p>
+    <!--    <div th:each="comment:${comments}">-->
+    <!--        <p th:text="${comment.getText()}"></p>-->
+</div>
+<div>
+    <a type="button" class="btn btn-success" th:href="@{/{id}/newComment(id=${company.getId()})}">+add course</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All groups</title>
+
+    <style>table,
+    td {
+        border: 1px solid #333;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+    }
+
+    thead,
+    tfoot {
+        background-color: #e8e5e5;
+        color: #344712;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid gold;
+            color: white;
+            padding: 3px;
+        }
+        body{
+            background-image: url("https://i.pinimg.com/564x/ec/9e/e3/ec9ee39a5baf466aa2143e1c31b04c24.jpg");
+        }
+        .mainButton{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<table class="styled-table">
+    <thead>
+    <tr>
+        <th scope="colgroup">id</th>
+        <th scope="col">group name</th>
+        <th scope="col">date of start</th>
+        <th scope="col">image</th>
+        <th scope="col">student</th>
+        <th scope="col">update</th>
+        <th scope="col">delete</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="group: ${groupCourses}" class="table">
+        <td th:text="${group.id}"></td>
+        <td th:text="${group.groupName}"></td>
+        <td th:text="${group.dateOfStart}"></td>
+        <td><img th:src="${group.image}"/></td>
+
+        <td><a th:href="@{/students/students/{id}(id=${group.getId()})}">
+            <button>Student</button>
+        </a>
+        </td>
+
+        <td><a th:href="@{/updateGroupByCourseId/{courseId}/{id}(courseId=${courseId}, id=${id})}">
+            <button>Update</button>
+        </a>
+        </td>
+        <td><a th:href="@{/{courseId}/{id}/deleteGroupByCourseId(courseId=${courseId},id=${group.getId()})}">
+            <button>Delete</button>
+        </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br><br><br><br>
+<div style="text-align: center">
+    <a th:href="@{/groups/{courseId}/addGroupByCourseId(courseId=${courseId})}">
+        <button class="btn"> Add Group </button>
+    </a>
+</div>
+
+<div  style="text-align: center">
+    <a class="mainButton" th:href="@{/companies}">
+        <button class="btn">main</button>
+    </a>
+</div>
+
+
+</body>
+</html>
